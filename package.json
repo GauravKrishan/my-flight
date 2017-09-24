@@ -1,0 +1,31 @@
+{
+  "name": "flight-generator-server",
+  "version": "1.0.0",
+  "description": "A flight generator server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "keywords": [
+    "auth"
+  ],
+  "author": "@Ajay",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "chance": "^1.0.11",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.4",
+    "jsonfile": "^4.0.0",
+    "jsonwebtoken": "^7.4.3",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "engines": {
+    "node":"6.9.x",
+    "npm":"3.10.x"
+  }
+}
