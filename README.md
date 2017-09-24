@@ -5,7 +5,7 @@ This is a sample app to book flights.
  NPM v3.10.8
  
  Node v6.11.2
- 
+    
  Chrome v60.0.3112.101
 
 # Server

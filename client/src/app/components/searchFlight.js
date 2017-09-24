@@ -52,7 +52,7 @@ export default class FlightSearch extends React.Component{
             this[method] = this[method].bind(this);
         })
     }
-    //Focus on element
+    //Focus on element.
     onFocus(ele){
         ele.focus();
     }
@@ -65,8 +65,8 @@ export default class FlightSearch extends React.Component{
             <div className='flight-search'>
                 <AutoComplete hintText='Origin' ref={this.onFocus} floatingLabelText="ORIGIN" dataSource={this.state.dataSourceOrigin} dataSourceConfig={dataSourceConfig} filter={AutoComplete.caseInsensitiveFilter} maxSearchResults={10} onUpdateInput={(value)=>this.handleUpdateOrigin(value)} onBlur={(value)=>this.onValidateOrigin(value)} errorText={this.state.errors.origin}/>
                 <AutoComplete hintText='Destination' floatingLabelText="DESTINATION" dataSource={this.state.dataSourceDestination} dataSourceConfig={dataSourceConfig} filter={AutoComplete.caseInsensitiveFilter} maxSearchResults={10} onUpdateInput={(value)=>this.handleUpdateDestination(value)}  onBlur={(value)=>this.onValidateDestination(value)} errorText={this.state.errors.destination}/>
-                <DatePicker container='inline'  floatingLabelText="DEPARTURE" minDate={moment().toDate()} autoOk = {true} onChange={(e,date)=>this.onDepartDateChange(date)}/> 
-                <DatePicker container='inline'  floatingLabelText="RETURN" minDate={moment().add(1,'d').toDate()} autoOk = {true}  onChange={(e,date)=>this.onReturnDateChange(date)}/> 
+                <DatePicker container='inline'  floatingLabelText="DEPARTURE" minDate={moment().toDate()} autoOk = {true} onChange={(e,date)=>this.onDepartDateChange(date)} value={this.state.departDate}/> 
+                <DatePicker container='inline'  floatingLabelText="RETURN" minDate={moment().add(1,'d').toDate()} autoOk = {true}  onChange={(e,date)=>this.onReturnDateChange(date)} value={this.state.returnDate}/> 
                 <TextField hintText='Passengers'  floatingLabelText="PASSENGERS" onChange={(e,value)=>this.onPassengerChange(value)} errorText={this.state.errors.passengers} value={this.state.passengers}/>
                 <br/>
                 <RaisedButton label = 'Search' primary={true} onClick={()=>this.onSearch()} disabled={this.onSearchValidate()}/>
@@ -159,8 +159,8 @@ export default class FlightSearch extends React.Component{
     }
     //On change of depart date field.
     onDepartDateChange(date){
-        date.setTime(new Date().getTime());
-        this.setState({departDate : date});
+        this.setState({departDate : date,returnDate:null});
+        
     } 
     //On change of return date.
     onReturnDateChange(date){
