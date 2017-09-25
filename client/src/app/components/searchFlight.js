@@ -24,6 +24,19 @@ const dataSourceConfig = {
 };
 
 const styles={
+  style:{
+      height:65,
+  },
+//   textFieldStyle:{
+//       height: 65,
+//       fontSize:14
+//   },
+  hintStyle:{ 
+      fontSize: 14 
+  },
+  inputStyle:{ 
+      fontSize: 14
+  },
   underlineStyle: {
     borderColor: color
   },
@@ -31,10 +44,14 @@ const styles={
     borderColor: color
   },
   floatingLabelStyle: {
-    color: color
+    color: color,
+    fontSize:14,
+    padding:0
   },
   floatingLabelFocusStyle: {
     color: color,
+    fontSize:14,
+    padding:0
   },
 }
 
