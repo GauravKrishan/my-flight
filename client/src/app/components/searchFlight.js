@@ -15,12 +15,28 @@ import {flightSearchModel} from '../models';
 const maxPassengers = 9;
 const minPrice = 5000;;
 const maxPrice = 500000;
+const color = "#009999";
 
 //Data source config for cities.
 const dataSourceConfig = {
   text: 'city',
   value: 'iata',
 };
+
+const styles={
+  underlineStyle: {
+    borderColor: color
+  },
+  underlineFocusStyle:{
+    borderColor: color
+  },
+  floatingLabelStyle: {
+    color: color
+  },
+  floatingLabelFocusStyle: {
+    color: color,
+  },
+}
 
 //Flight Search Component.
 export default class FlightSearch extends React.Component{
@@ -63,11 +79,11 @@ export default class FlightSearch extends React.Component{
     render(){
         return (
             <div className='flight-search'>
-                <AutoComplete hintText='Origin' ref={this.onFocus} floatingLabelText="ORIGIN" dataSource={this.state.dataSourceOrigin} dataSourceConfig={dataSourceConfig} filter={AutoComplete.caseInsensitiveFilter} maxSearchResults={10} onUpdateInput={(value)=>this.handleUpdateOrigin(value)} onBlur={(value)=>this.onValidateOrigin(value)} errorText={this.state.errors.origin}/>
-                <AutoComplete hintText='Destination' floatingLabelText="DESTINATION" dataSource={this.state.dataSourceDestination} dataSourceConfig={dataSourceConfig} filter={AutoComplete.caseInsensitiveFilter} maxSearchResults={10} onUpdateInput={(value)=>this.handleUpdateDestination(value)}  onBlur={(value)=>this.onValidateDestination(value)} errorText={this.state.errors.destination}/>
+                <AutoComplete hintText='Origin' ref={this.onFocus} floatingLabelText="ORIGIN" dataSource={this.state.dataSourceOrigin} dataSourceConfig={dataSourceConfig} filter={AutoComplete.caseInsensitiveFilter} maxSearchResults={10} onUpdateInput={(value)=>this.handleUpdateOrigin(value)} onBlur={(value)=>this.onValidateOrigin(value)} errorText={this.state.errors.origin} {...styles}/>
+                <AutoComplete hintText='Destination' floatingLabelText="DESTINATION" dataSource={this.state.dataSourceDestination} dataSourceConfig={dataSourceConfig} filter={AutoComplete.caseInsensitiveFilter} maxSearchResults={10} onUpdateInput={(value)=>this.handleUpdateDestination(value)}  onBlur={(value)=>this.onValidateDestination(value)} errorText={this.state.errors.destination}  {...styles}/>
                 <DatePicker container='inline'  floatingLabelText="DEPARTURE" minDate={moment().toDate()} autoOk = {true} onChange={(e,date)=>this.onDepartDateChange(date)} value={this.state.departDate}/> 
                 <DatePicker container='inline'  floatingLabelText="RETURN" minDate={moment().add(1,'d').toDate()} autoOk = {true}  onChange={(e,date)=>this.onReturnDateChange(date)} value={this.state.returnDate}/> 
-                <TextField hintText='Passengers'  floatingLabelText="PASSENGERS" onChange={(e,value)=>this.onPassengerChange(value)} errorText={this.state.errors.passengers} value={this.state.passengers}/>
+                <TextField hintText='Passengers'  floatingLabelText="PASSENGERS" onChange={(e,value)=>this.onPassengerChange(value)} errorText={this.state.errors.passengers} value={this.state.passengers}  {...styles}/>
                 <br/>
                 <RaisedButton label = 'Search' primary={true} onClick={()=>this.onSearch()} disabled={this.onSearchValidate()}/>
                 <SliderComponent updateMaxPrice={this.updateMaxPrice} minPrice={this.state.minPrice} maxPrice={this.state.maxPrice} step={10000} price={this.state.selectedMaxPrice}/>

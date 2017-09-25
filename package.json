@@ -16,8 +16,6 @@
     "chance": "^1.0.11",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
-    "jsonfile": "^4.0.0",
-    "jsonwebtoken": "^7.4.3",
     "lodash": "^4.17.4",
     "moment": "^2.18.1"
   },
